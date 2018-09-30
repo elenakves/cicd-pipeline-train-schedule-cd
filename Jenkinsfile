@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Running build automation my test3'
+                echo 'Running build automation'
+                echo 'en staging and production run ssh-keygen, cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys and add jenkins auth key'
                 sh './gradlew build --no-daemon'
                 archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
