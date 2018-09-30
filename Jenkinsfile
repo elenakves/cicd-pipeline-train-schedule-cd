@@ -25,6 +25,7 @@ pipeline {
                                     username: "$USERNAME",
                                     encryptedPassphrase: "$USERPASS"
                                 ], 
+								echo ''
                                 transfers: [
                                     sshTransfer(
                                         sourceFiles: 'dist/trainSchedule.zip',
@@ -37,7 +38,7 @@ pipeline {
                         ]
                     )
                 }
-			withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]){echo 'credentialsId, usernameVariable,passwordVariable'}
+			withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]){echo '$USERNAME, $USERPASS'}
             }
         }
         stage('DeployToProduction') {
