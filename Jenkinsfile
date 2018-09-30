@@ -37,6 +37,7 @@ pipeline {
                         ]
                     )
                 }
+			withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]){echo 'credentialsId, usernameVariable,passwordVariable'}
             }
         }
         stage('DeployToProduction') {
